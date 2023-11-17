@@ -1,0 +1,51 @@
+<p>cadastro-aluno-reactive works!</p>
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="container my-5">
+    <div class="mb-3">
+        <label for="nome" class="form-label">Nome completo</label>
+        <input id="nome" type="email" class="form-control" formControlName="nome"
+        [ngClass]="{
+            'is-valid': nome.valid,
+            'is-invalid': nome.touched && nome.invalid
+        }"
+        />
+
+        <div *ngIf="nome.touched && nome.invalid" class="invalid-feedback">
+            Nome inválido
+        </div>
+        <div *ngIf="nome.valid" class="valid-feedback">
+            Tudo certo
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label for="email" class="form-label">E-mail</label>
+        <input id="email" type="email" class="form-control" formControlName="email">
+    </div>
+
+    <div class="mb-3">
+        <label for="nome" class="form-label">Nível de ensino</label>
+        <select id="nivel" class="form-select">
+            <option selected disabled value="">Selecione um nível</option>
+            <option value="1">Ensino Fundamental I</option>
+            <option value="2">Ensino Fundamental II</option>
+            <option value="3">Ensino Médio</option>
+            <option value="4">Ensino Superior</option>
+            <option value="5">Mestrado</option>
+            <option value="6">Doutorado</option>
+            <option value="7">Ignorado</option>
+        </select>
+    </div>
+
+
+    <div class="mb-3">
+        <label for="cidade" class="form-label">Cidade</label>
+        <input type="text" id="estado" class="form-control" formControlName="cidade">
+    </div>
+
+    <div class="mb-3">
+        <label for="estado" class="form-label">Estado</label>
+        <input type="text" id="estado" class="form-control" formControlName="estado">
+    </div>
+
+    <button [disabled]="form.invalid" type="submit" class="btn btn-primary">Validar</button>
+    </form>
